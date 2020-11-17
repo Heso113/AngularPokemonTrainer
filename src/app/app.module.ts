@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './components/login/login-page/login-page.component';
-import { LoginFormComponent } from './components/login/login-form/login-form.component';
-import { TrainerPageComponent } from './components/dashboard/trainer-page/trainer-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { TrainerPageComponent } from './components/pages/trainer-page/trainer-page.component';
 
 @NgModule({
   declarations: [

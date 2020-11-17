@@ -7,4 +7,14 @@ import { Injectable } from '@angular/core';
 export class SessionService {
 
   constructor() { }
+
+  save(trainerName: string) {
+    localStorage.setItem('trainerName', trainerName);
+  }
+
+  get(): string {
+    return localStorage.getItem('trainerName') || '';
+  }
+
+
 }
