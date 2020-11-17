@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { 
-    let trainerName = 'testName';
-    localStorage.setItem('trainerName', trainerName);
-    console.log(localStorage.getItem('trainerName'));
+  constructor(private router: Router) { 
+    // let trainerName = 'testName';
+    // localStorage.setItem('trainerName', trainerName);
+    if (localStorage.getItem('trainerName') === null) {
+      this.router.navigate(['/loginForm']);
+    } else {
+      this.router.navigate(['/trainerPage']);
+    }
   }
 
   ngOnInit(): void {
