@@ -9,7 +9,15 @@ export class LoginFormComponent implements OnInit {
 
   constructor() { }
 
+  trainer = {
+    trainerName: ''
+  }
+
   ngOnInit(): void {
+  }
+
+  onRegisterClicked() {
+    console.log(this.trainer.trainerName);
   }
 
 }

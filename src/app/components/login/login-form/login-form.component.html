@@ -2,7 +2,7 @@
 <form>
     <div>
         <label for="trainerName">Trainer name</label>
-        <input type="text" name="trainerName" id="trainerName" placeholder="Enter a trainer name...">
+        <input type="text" name="trainerName" id="trainerName" placeholder="Enter a trainer name..." [(ngModel)]="trainer.trainerName">
     </div>
-    <button>Login</button>
+    <button (click)="onRegisterClicked()" type="button">Register Trainer</button>
 </form>
