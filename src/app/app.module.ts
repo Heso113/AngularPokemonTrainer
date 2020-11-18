@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { TrainerPageComponent } from './components/pages/trainer-page/trainer-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TrainerPageComponent } from './components/pages/trainer-page/trainer-pa
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
