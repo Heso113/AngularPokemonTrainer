@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class PokemonAPIService {
 
   url = 'https://pokeapi.co/api/v2/';
+  nrOfPokemonCardsPerPage = 50;
+
 
   constructor(private http: HttpClient) {}
 
@@ -16,8 +18,8 @@ export class PokemonAPIService {
   }
 
   getPokemonPage(pageIndex: number) {
-    const offset = pageIndex * 100;
-    return this.http.get(this.url + 'pokemon?limit=100&offset=' + offset).toPromise();
+    const offset = pageIndex * this.nrOfPokemonCardsPerPage;
+    return this.http.get(this.url + 'pokemon?limit=' + this.nrOfPokemonCardsPerPage + '&offset=' + offset).toPromise();
   }
 
   getPokemonByUrl(url: string) {
