@@ -9,6 +9,7 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { TrainerPageComponent } from './components/pages/trainer-page/trainer-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonCatalogueComponent } from './components/pages/pokemon-catalogue/pokemon-catalogue/pokemon-catalogue.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginPageComponent,
     LoginFormComponent,
     TrainerPageComponent,
+    PokemonCatalogueComponent,
   ],
   imports: [
     BrowserModule,
