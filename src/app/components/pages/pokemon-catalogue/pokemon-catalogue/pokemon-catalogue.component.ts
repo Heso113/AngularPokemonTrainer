@@ -10,27 +10,15 @@ export class PokemonCatalogueComponent implements OnInit {
 
   currentPokemonPage = [];
 
-  constructor(private api: PokemonAPIService) { }
+  constructor(private api: PokemonAPIService) {
+    this.getPageOfPokemons(0);
+  }
 
   ngOnInit(): void {
   }
 
-  async getAllPokemons() {
-    console.log('Button clicked');
-    const pokemons = await this.api.getAllPokemons();
-    console.log(pokemons);
-  }
-
   async getPageOfPokemons(index: number) {
-    let page = await this.api.getPokemonPage(index);
-    // this.currentPokemonPage = page.results;
-    // console.log(this.currentPokemonPage);
-    // console.log(page);
-    this.currentPokemonPage = [];
-    for (let i = 0; i < 50; i++) {
-    let pokemon = await this.createPokemonCardObject(i, page);
-      this.currentPokemonPage.push(pokemon);
-    }
+    this.currentPokemonPage = this.api.getPreLoadedPokemonPage(index);
   }
 
   async createPokemonCardObject(index: number, page:Object) {
