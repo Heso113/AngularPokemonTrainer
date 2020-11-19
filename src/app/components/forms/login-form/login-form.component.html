@@ -1,8 +1,26 @@
-<p>login-form works!</p>
-<form>
-    <div>
-        <label for="trainerName">Trainer name</label>
-        <input type="text" name="trainerName" id="trainerName" placeholder="Enter a trainer name..." [(ngModel)]="trainer.trainerName">
-    </div>
-    <button (click)="onRegisterClicked()" type="button">Register Trainer</button>
-</form>
+
+<div class="container">
+    <h1 class="text-center">Login to Pokemon Trainer App</h1>
+        <form [formGroup]="loginForm"> 
+            <div class="form-group">   
+                <label for="trainerName">Trainer name</label>
+                <input class="form-control" type="text" name="trainerName" id="trainerName" 
+                placeholder="Enter your trainer name..." formControlName="trainerName" required minLength="3" maxLength="45">
+            </div>
+
+            <!--Check if the user has clicked in the field and left it empty and the validation failed-->
+            <div *ngIf="trainerName.invalid && (trainerName.dirty || trainerName.touched)">
+                <p *ngIf="trainerName.errors.required">Trainer name is required.</p>
+                <p *ngIf="trainerName.errors.minlength">Trainer name must be at least 3 characters long.</p>
+                <p *ngIf="trainerName.errors.maxlength">Trainer name must be shorter than 45 characters.</p>
+            </div>
+            
+            <br>
+
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="onLoginClicked()" type="button" [disabled]="loginForm.invalid">
+                    Login Trainer
+                </button>
+            </div>
+    </form>            
+</div>
