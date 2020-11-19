@@ -19,12 +19,9 @@ export class LoginFormComponent implements OnInit {
     }
    }
 
-  // trainer = {
-  //   trainerName: ''
-  // }
-
+  
   loginForm: FormGroup = new FormGroup ({
-    trainerName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(45)])
+    trainerName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)])
   });
 
   get trainerName() {
@@ -33,10 +30,11 @@ export class LoginFormComponent implements OnInit {
 
   onLoginClicked() {
     try {
-      this.session.save(this.loginForm.value);
+      this.session.save(this.loginForm.value.trainerName);
     } catch (e) {
       console.error(e.error);
     } finally {
+      console.log(this.trainerName);
       this.router.navigate(['/trainerPage']);
     }
   }

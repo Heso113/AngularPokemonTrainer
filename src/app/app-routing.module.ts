@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { PokemonCatalogueComponent } from './components/pages/pokemon-catalogue/pokemon-catalogue/pokemon-catalogue.component';
+import { PokemonDetailsComponent } from './components/pages/pokemon-details/pokemon-details/pokemon-details.component';
 import { TrainerPageComponent } from './components/pages/trainer-page/trainer-page.component';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'pokemonCatalogue',
     component: PokemonCatalogueComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'pokemonDetails',
+    component: PokemonDetailsComponent,
     canActivate: [ AuthGuard ]
   },
   {
