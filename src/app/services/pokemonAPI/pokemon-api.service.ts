@@ -11,32 +11,35 @@ export class PokemonAPIService {
   numberOfPages = 0;
   nrOfPokemonsPerPage = 50;
   pokemonPages = [];
+  initialized = false;
 
   constructor(private http: HttpClient) {
-    this.initPokemonCatalogue();
   }
 
   async initPokemonCatalogue() {
-    let pokemonInfo = await this.getAllPokemons();
-    this.pokemonCount = pokemonInfo.count;
-    this.numberOfPages = this.pokemonCount / this.nrOfPokemonsPerPage;
-    console.log(this.pokemonCount);
-    console.log(this.numberOfPages);
-    console.log(pokemonInfo);
-    for (let i = 0; i < this.numberOfPages; i++) {
-      let nextSetOfPokemons = await this.getPokemonPage(i);
-      console.log(nextSetOfPokemons);
-      let nextPage = [];
-      for (let p = 0; p < this.nrOfPokemonsPerPage; p++) {
-        let nextPokemon = await this.getPokemonByUrl(nextSetOfPokemons.results[p].url);
-        let name = nextSetOfPokemons.results[p].name;
-        let imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + nextPokemon.id + '.png';
-        let pokemonObject = {name, imgUrl};
-        nextPage.push(pokemonObject);
+    if (!this.initialized) {
+      this.initialized = true;
+      let pokemonInfo = await this.getAllPokemons();
+      this.pokemonCount = pokemonInfo.count;
+      this.numberOfPages = this.pokemonCount / this.nrOfPokemonsPerPage;
+      console.log(this.pokemonCount);
+      console.log(this.numberOfPages);
+      console.log(pokemonInfo);
+      for (let i = 0; i < this.numberOfPages; i++) {
+        let nextSetOfPokemons = await this.getPokemonPage(i);
+        console.log(nextSetOfPokemons);
+        let nextPage = [];
+        for (let p = 0; p < this.nrOfPokemonsPerPage; p++) {
+          let nextPokemon = await this.getPokemonByUrl(nextSetOfPokemons.results[p].url);
+          let name = nextSetOfPokemons.results[p].name;
+          let imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + nextPokemon.id + '.png';
+          let pokemonObject = {name, imgUrl};
+          nextPage.push(pokemonObject);
+        }
+        this.pokemonPages.push(nextPage);
       }
-      this.pokemonPages.push(nextPage);
+      console.log(this.pokemonPages);
     }
-    console.log(this.pokemonPages);
   }
 
   private getAllPokemons() {
@@ -54,5 +57,9 @@ export class PokemonAPIService {
 
   getPreLoadedPokemonPage(pageIndex: number) {
     return this.pokemonPages[pageIndex];
+  }
+
+  getAllPreLoadedPokemonPages() {
+    return this.pokemonPages;
   }
 }

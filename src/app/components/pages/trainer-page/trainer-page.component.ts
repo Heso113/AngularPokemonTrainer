@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
 import { SessionService } from 'src/app/services/session/session.service';
 
 
@@ -10,18 +11,23 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class TrainerPageComponent implements OnInit {
 
-  constructor(private session: SessionService, private router: Router) { }
+  constructor(private session: SessionService, private router: Router, private api: PokemonAPIService) {
+    this.api.initPokemonCatalogue();
+  }
 
   ngOnInit(): void {
   }
 
-
   async onGetPokemonCatalogue() {
-    if (this.session.get() !== '') {
-      this.router.navigateByUrl('/pokemonCatalogue');
-    } else {
-      this.router.navigateByUrl('/loginForm');
-    }
+    try {
+      if (this.session.get() !== '') {
+        this.router.navigateByUrl('/pokemonCatalogue');
+      } else {
+        this.router.navigateByUrl('/loginForm');
+      }
+    } catch (e) {
+      console.log(e.error);
+    }  
   }
 
 }

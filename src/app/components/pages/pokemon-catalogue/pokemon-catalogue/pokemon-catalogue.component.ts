@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
 
 @Component({
@@ -9,12 +10,18 @@ import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.servi
 export class PokemonCatalogueComponent implements OnInit {
 
   currentPokemonPage = [];
+  pokemonPages = [];
 
-  constructor(private api: PokemonAPIService) {
-    this.getPageOfPokemons(0);
+  constructor(private api: PokemonAPIService, private router: Router) {
+    this.currentPokemonPage = this.api.getPreLoadedPokemonPage(0);
+    this.pokemonPages = this.api.getAllPreLoadedPokemonPages();
   }
 
   ngOnInit(): void {
+  }
+
+  onBackClicked() {
+    this.router.navigateByUrl('/trainerPage');
   }
 
   async getPageOfPokemons(index: number) {

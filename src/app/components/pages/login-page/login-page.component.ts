@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
 import { SessionService } from 'src/app/services/session/session.service';
 
 
@@ -10,17 +11,21 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private session: SessionService, private router: Router) { 
+  constructor(private session: SessionService, private router: Router, private api: PokemonAPIService) { 
   }
 
   ngOnInit(): void {
   }
 
-  onLoginClicked() {
-    if (this.session.get() !== '') {
-      this.router.navigateByUrl('/trainerPage');
-    } else {
-      this.router.navigateByUrl('/loginForm');
+  async onLoginClicked() {
+    try {
+      if (this.session.get() !== '') {
+        this.router.navigateByUrl('/trainerPage');
+      } else {
+        this.router.navigateByUrl('/loginForm');
+      }
+    } catch (e) {
+      console.log(e.error);
     }
   }
 }
