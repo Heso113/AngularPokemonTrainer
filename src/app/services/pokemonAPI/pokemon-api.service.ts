@@ -22,24 +22,38 @@ export class PokemonAPIService {
       let pokemonInfo = await this.getAllPokemons();
       this.pokemonCount = pokemonInfo.count;
       this.numberOfPages = this.pokemonCount / this.nrOfPokemonsPerPage;
-      console.log(this.pokemonCount);
-      console.log(this.numberOfPages);
-      console.log(pokemonInfo);
       for (let i = 0; i < this.numberOfPages; i++) {
         let nextSetOfPokemons = await this.getPokemonPage(i);
-        console.log(nextSetOfPokemons);
         let nextPage = [];
         for (let p = 0; p < this.nrOfPokemonsPerPage; p++) {
           let nextPokemon = await this.getPokemonByUrl(nextSetOfPokemons.results[p].url);
           let name = nextSetOfPokemons.results[p].name;
+          let id = nextPokemon.id;
+          let types = nextPokemon.types;
+          let baseStats = nextPokemon.stats;
+          let height = nextPokemon.height;
+          let weight = nextPokemon.weight;
+          let abilities = nextPokemon.abilities;
+          let baseExperience = nextPokemon.base_experience;
+          let moves = nextPokemon.moves;
           let imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + nextPokemon.id + '.png';
-          let pokemonObject = {name, imgUrl};
+          let pokemonObject = {
+            baseStats: {imgUrl, types, baseStats, name, id},
+            profile: {height, weight, abilities, baseExperience},
+            moves
+          };
           nextPage.push(pokemonObject);
         }
         this.pokemonPages.push(nextPage);
       }
       console.log(this.pokemonPages);
     }
+    let pokemon = {
+      baseStats: {Image: 3, types: 3, baseStats: 3, name: 3},
+      profile: {height: 3, weight: 3, abilities: 3, baseExperience: 3},
+      moves: ['move1', 'move2', 'move3', 'move4']
+    }
+    pokemon.baseStats.Image
   }
 
   private getAllPokemons() {

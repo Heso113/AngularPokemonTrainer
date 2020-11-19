@@ -11,6 +11,7 @@ export class PokemonCatalogueComponent implements OnInit {
 
   currentPokemonPage = [];
   pokemonPages = [];
+  currentPokemonCard = {};
 
   constructor(private api: PokemonAPIService, private router: Router) {
     this.currentPokemonPage = this.api.getPreLoadedPokemonPage(0);
@@ -26,6 +27,11 @@ export class PokemonCatalogueComponent implements OnInit {
 
   async getPageOfPokemons(index: number) {
     this.currentPokemonPage = this.api.getPreLoadedPokemonPage(index);
+  }
+
+  getDetailedPokemonCard(index: number) {
+    this.currentPokemonCard = this.currentPokemonPage[index];
+    console.log(this.currentPokemonCard);
   }
 
   async createPokemonCardObject(index: number, page:Object) {

@@ -12,12 +12,12 @@
    
     
         <div class="row row-cols-1 row-cols-md-5">
-            <div class="card h-100 m-3" style="width: 18rem;" *ngFor="let pokemon of currentPokemonPage">
-                <img src={{pokemon.imgUrl}} class="card-img-top" alt="...">
+            <div class="card h-100 m-3" style="width: 18rem;" *ngFor="let pokemon of currentPokemonPage; index as i">
+                <img src={{pokemon.baseStats.imgUrl}} class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title text-center"><strong>{{pokemon.name}}</strong></h5>
+                <h5 class="card-title text-center"><strong>{{pokemon.baseStats.name}}</strong></h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div class="text-center"><a class="btn btn-primary" (click)="getPokemonByUrl(pokemon.url)">Pokemon Details</a></div>
+                <div class="text-center"><a class="btn btn-primary" (click)="getDetailedPokemonCard(i)">Pokemon Details</a></div>
                 </div>
             </div>
         </div>
