@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { SessionService } from 'src/app/services/session/session.service';
 
 @Component({
@@ -11,10 +10,9 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class LoginFormComponent implements OnInit {
 
-
-  /* If an object is saved, redirect to dashboard */
-  constructor(private session: SessionService, private router: Router, private auth: AuthService) { 
-    if (this.session.get() !== '') {
+  /* If an object is saved, redirect to trainer page */
+  constructor(private session: SessionService, private router: Router ) { 
+    if (this.session.getTrainerName() !== '') {
       this.router.navigateByUrl('/trainerPage');
     }
    }
@@ -30,7 +28,7 @@ export class LoginFormComponent implements OnInit {
 
   onLoginClicked() {
     try {
-      this.session.save(this.loginForm.value.trainerName);
+      this.session.saveLogin(this.loginForm.value.trainerName);
     } catch (e) {
       console.error(e.error);
     } finally {

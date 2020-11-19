@@ -10,11 +10,11 @@ export class SessionService {
   constructor() { }
 
   
-  save(trainerName: string) {
+  saveLogin(trainerName: string) {
     localStorage.setItem('trainerName', trainerName);
   }
 
-  get(): string {
+  getTrainerName(): string {
     return localStorage.getItem('trainerName') || '';
   }
 

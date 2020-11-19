@@ -27,7 +27,8 @@ export class PokemonAPIService {
         let nextPage = [];
         for (let p = 0; p < this.nrOfPokemonsPerPage; p++) {
           let nextPokemon = await this.getPokemonByUrl(nextSetOfPokemons.results[p].url);
-          let name = nextSetOfPokemons.results[p].name;
+          let pokemonName = nextSetOfPokemons.results[p].name;
+          let name = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
           let id = nextPokemon.id;
           let types = nextPokemon.types;
           let baseStats = nextPokemon.stats;

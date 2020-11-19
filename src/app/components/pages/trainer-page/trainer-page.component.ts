@@ -20,7 +20,7 @@ export class TrainerPageComponent implements OnInit {
 
   async onGetPokemonCatalogue() {
     try {
-      if (this.session.get() !== '') {
+      if (this.session.getTrainerName() !== '') {
         this.router.navigateByUrl('/pokemonCatalogue');
       } else {
         this.router.navigateByUrl('/loginForm');
