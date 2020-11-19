@@ -27,7 +27,7 @@ const routes: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
-    path: 'pokemonDetails',
+    path: 'pokemonDetails/:id',
     component: PokemonDetailsComponent,
     canActivate: [ AuthGuard ]
   },

@@ -2,9 +2,9 @@
 <div class="container">
     <h1 class="text-center mb-5">Pokémon Details</h1>
 
-    <div class="card text-center">
+    <div class="card text-center" *ngIf="pokemon">
         <div class="card-header">
-          <h4 class="text-center">Pokemon Name</h4>
+          <h4 class="text-center">{{pokemon.baseStats.name}}</h4>
         </div>
         <div class="card-body">
           <img src="..." class="img-fluid" alt="responsive image">
