@@ -11,6 +11,7 @@ import { TrainerPageComponent } from './components/pages/trainer-page/trainer-pa
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonCatalogueComponent } from './components/pages/pokemon-catalogue/pokemon-catalogue/pokemon-catalogue.component';
 import { PokemonDetailsComponent } from './components/pages/pokemon-details/pokemon-details/pokemon-details.component';
+import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PokemonDetailsComponent } from './components/pages/pokemon-details/poke
     TrainerPageComponent,
     PokemonCatalogueComponent,
     PokemonDetailsComponent,
+    PokemonCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,9 +10,9 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  /* If an object is saved, redirect to dashboard */
+  /* If an object is saved, redirect to trainer page */
   constructor(private session: SessionService, private router: Router ) { 
-    if (this.session.get() !== '') {
+    if (this.session.getTrainerName() !== '') {
       this.router.navigateByUrl('/trainerPage');
     }
    }

@@ -14,7 +14,7 @@ export class SessionService {
     localStorage.setItem('trainerName', trainerName);
   }
 
-  get(): string {
+  getTrainerName(): string {
     return localStorage.getItem('trainerName') || '';
   }
 
