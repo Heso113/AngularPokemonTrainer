@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 
 @Injectable({
@@ -8,6 +9,7 @@ export class SessionService {
 
   constructor() { }
 
+  
   save(trainerName: string) {
     localStorage.setItem('trainerName', trainerName);
   }

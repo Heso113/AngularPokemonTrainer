@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,8 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { TrainerPageComponent } from './components/pages/trainer-page/trainer-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonCatalogueComponent } from './components/pages/pokemon-catalogue/pokemon-catalogue/pokemon-catalogue.component';
+import { PokemonDetailsComponent } from './components/pages/pokemon-details/pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginPageComponent,
     LoginFormComponent,
     TrainerPageComponent,
+    PokemonCatalogueComponent,
+    PokemonDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
