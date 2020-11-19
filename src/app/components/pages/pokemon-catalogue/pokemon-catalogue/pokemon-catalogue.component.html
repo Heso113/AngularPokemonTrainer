@@ -16,14 +16,7 @@
             <button (click)="getPageOfPokemons(10)">11</button>
         </div>
     </nav>
-    
-    <div>
-        <div>
-            <button (click)="getAllPokemons()" type="button">Get it all!</button>
-    
-        </div>
-    </div>
-    
+   
     
         <div class="row row-cols-1 row-cols-md-5">
             <div class="card h-100 m-3" style="width: 18rem;" *ngFor="let pokemon of currentPokemonPage">

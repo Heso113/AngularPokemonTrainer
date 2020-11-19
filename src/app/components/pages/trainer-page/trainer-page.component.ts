@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/session/session.service';
 
 
 @Component({
@@ -8,14 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainerPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  
 
- 
- 
+  async onGetPokemonCatalogue() {
+    if (this.session.get() !== '') {
+      this.router.navigateByUrl('/pokemonCatalogue');
+    } else {
+      this.router.navigateByUrl('/loginForm');
+    }
+  }
 
 }
