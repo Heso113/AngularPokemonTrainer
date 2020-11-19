@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
 
   onLoginClicked() {
     try {
-      this.session.save(this.loginForm.value.trainerName);
+      this.session.saveLogin(this.loginForm.value.trainerName);
     } catch (e) {
       console.error(e.error);
     } finally {

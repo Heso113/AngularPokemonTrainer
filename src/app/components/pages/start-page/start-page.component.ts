@@ -5,11 +5,11 @@ import { SessionService } from 'src/app/services/session/session.service';
 
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: 'app-start-page',
+  templateUrl: './start-page.component.html',
+  styleUrls: ['./start-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class StartPageComponent implements OnInit {
 
   constructor(private session: SessionService, private router: Router, private api: PokemonAPIService) { 
   }
@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onLoginClicked() {
+  async onStartClicked() {
     try {
       if (this.session.get() !== '') {
         this.router.navigateByUrl('/trainerPage');
