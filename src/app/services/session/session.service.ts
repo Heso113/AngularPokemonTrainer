@@ -7,9 +7,27 @@ import { FormGroup } from '@angular/forms';
 })
 export class SessionService {
 
+  loggedIn = false;
+
   constructor() { }
 
   
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
+  logIn() {
+    this.loggedIn = true;
+  }
+
+  userExists() {
+    if (this.getTrainerName() !== '') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   saveLogin(trainerName: string) {
     localStorage.setItem('trainerName', trainerName);
   }

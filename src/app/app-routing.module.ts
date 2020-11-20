@@ -14,7 +14,8 @@ const routes: Routes = [
   },
   {
     path:'loginForm',
-    component: LoginFormComponent
+    component: LoginFormComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path:'trainerPage',

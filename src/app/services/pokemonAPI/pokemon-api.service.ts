@@ -65,7 +65,6 @@ export class PokemonAPIService {
       let pokemon = await this.getPokemonDetails(id);
       pokemonArray.push(pokemon);
     }
-    console.log(pokemonArray);
     return pokemonArray;
   }
 

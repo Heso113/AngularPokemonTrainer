@@ -19,7 +19,8 @@ export class StartPageComponent implements OnInit {
 
   async onStartClicked() {
     try {
-      if (this.session.getTrainerName() !== '') {
+      this.session.logIn();
+      if (this.session.userExists()) {
         this.router.navigateByUrl('/trainerPage');
       } else {
         this.router.navigateByUrl('/loginForm');
