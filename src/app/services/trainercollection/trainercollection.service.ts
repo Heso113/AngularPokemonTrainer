@@ -20,7 +20,7 @@ export class TrainercollectionService {
   removePokemonFromCollection(id: number) {
     let index = -1;
     for (let i = 0; i < this.trainerCollection.length; i++) {
-      if (this.trainerCollection[i] === id) {
+      if (this.trainerCollection[i] === id || this.trainerCollection[i] === id.toString()) {
         index = i;
         break;
       }
@@ -32,6 +32,7 @@ export class TrainercollectionService {
   }
 
   getTrainerCollection() {
+    this.loadTrainerCollectionFromLocalStorage();
     return this.api.getPokemonCollectionFromIds(this.trainerCollection);
   }
 
@@ -40,6 +41,8 @@ export class TrainercollectionService {
     let arrayFromString = collectionString?.split(',');
     if (arrayFromString !== undefined) {
       this.trainerCollection = arrayFromString;
+    } else {
+      this.trainerCollection = new Array();
     }
   }
 

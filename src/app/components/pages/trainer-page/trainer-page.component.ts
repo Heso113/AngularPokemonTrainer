@@ -27,15 +27,11 @@ export class TrainerPageComponent implements OnInit {
   }
 
   async onGetPokemonCatalogue() {
-    try {
-      if (this.session.getTrainerName() !== '') {
-        this.router.navigateByUrl('/pokemonCatalogue');
-      } else {
-        this.router.navigateByUrl('/loginForm');
-      }
-    } catch (e) {
-      console.log(e.error);
-    }  
+    this.router.navigateByUrl('/pokemonCatalogue')
   }
 
+  onLogOutClicked() {
+    this.session.logOut();
+    this.router.navigateByUrl('startPage');
+  }
 }
