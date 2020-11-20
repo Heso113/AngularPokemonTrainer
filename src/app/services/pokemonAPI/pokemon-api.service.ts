@@ -85,6 +85,15 @@ export class PokemonAPIService {
     return this.buildPokemonObject(pokemonResult);
   }
 
+  async getPokemonMoveDetails(url: string) {
+    let pokemonMoveDetails = await this.getMoveByUrl(url);
+    return pokemonMoveDetails;
+  }
+
+  private getMoveByUrl(url: string) {
+    return this.http.get(url).toPromise();
+  }
+
   /*http get request from api to fetch specific pokemon by id*/ 
   private getPokemonById(id: number) {
     let url = this.url + `pokemon/${id}`;
