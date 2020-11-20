@@ -9,5 +9,10 @@
     <div>
         <h5>My Pokémons</h5>
     </div>
+    <div class="row row-cols-1 row-cols-md-5">
+        <div class="card h-100 m-3" style="width: 18rem;" *ngFor="let pokemon of pokemonCollection; index as i">
+            <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card> 
+        </div>
+    </div>
 </div>
 
