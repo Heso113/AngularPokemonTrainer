@@ -20,7 +20,7 @@ export class TrainercollectionService {
   removePokemonFromCollection(id: number) {
     let index = -1;
     for (let i = 0; i < this.trainerCollection.length; i++) {
-      if (this.trainerCollection[i] === id) {
+      if (this.trainerCollection[i] === id || this.trainerCollection[i] === id.toString()) {
         index = i;
         break;
       }
