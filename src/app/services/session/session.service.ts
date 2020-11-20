@@ -20,6 +20,12 @@ export class SessionService {
     this.loggedIn = true;
   }
 
+  logOut() {
+    localStorage.removeItem('trainerName');
+    localStorage.removeItem('trainerCollection');
+    this.loggedIn = false;
+  }
+
   userExists() {
     if (this.getTrainerName() !== '') {
       return true;

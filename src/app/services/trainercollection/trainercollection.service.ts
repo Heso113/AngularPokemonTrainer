@@ -32,6 +32,7 @@ export class TrainercollectionService {
   }
 
   getTrainerCollection() {
+    this.loadTrainerCollectionFromLocalStorage();
     return this.api.getPokemonCollectionFromIds(this.trainerCollection);
   }
 
@@ -40,6 +41,8 @@ export class TrainercollectionService {
     let arrayFromString = collectionString?.split(',');
     if (arrayFromString !== undefined) {
       this.trainerCollection = arrayFromString;
+    } else {
+      this.trainerCollection = new Array();
     }
   }
 
