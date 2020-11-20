@@ -18,8 +18,17 @@ export class TrainercollectionService {
   }
 
   removePokemonFromCollection(id: number) {
-    let index = this.trainerCollection.indexOf(id);
-    this.trainerCollection.splice(index, 1);
+    let index = -1;
+    for (let i = 0; i < this.trainerCollection.length; i++) {
+      if (this.trainerCollection[i] === id) {
+        index = i;
+        break;
+      }
+    }
+    if (index !== -1) {
+      this.trainerCollection.splice(index, 1);
+    }
+    this.updateTrainerCollection();
   }
 
   getTrainerCollection() {
