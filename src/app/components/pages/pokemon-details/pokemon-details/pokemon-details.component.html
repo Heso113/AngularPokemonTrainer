@@ -23,8 +23,8 @@
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         </div>
         <div class="card-footer text-muted">
-            <button class="btn btn-success mr-3">Catch this Pokémon!</button> 
-            <button class="btn btn-danger">Delete this Pokémon</button> 
+            <button class="btn btn-success mr-3" (click)="addPokemonToTrainerCollection(pokemon.baseStats.id)">Catch this Pokémon!</button> 
+            <button class="btn btn-danger" (click)="removePokemonFromTrainerCollection(pokemon.baseStats.id)">Delete this Pokémon</button> 
         </div>
       </div>
 

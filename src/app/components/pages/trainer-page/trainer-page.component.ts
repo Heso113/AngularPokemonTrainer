@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
 import { SessionService } from 'src/app/services/session/session.service';
+import { TrainercollectionService } from 'src/app/services/trainercollection/trainercollection.service';
 
 
 @Component({
@@ -11,11 +12,18 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class TrainerPageComponent implements OnInit {
 
-  constructor(private session: SessionService, private router: Router, private api: PokemonAPIService) {
-    this.api.initPokemonCatalogue();
+  pokemonCollection = new Array();
+
+  constructor(private session: SessionService, private router: Router, private api: PokemonAPIService, private collection: TrainercollectionService) {
+    this.init();
   }
 
   ngOnInit(): void {
+  }
+
+  async init() {
+    await this.api.initPokemonCatalogue();
+    this.pokemonCollection = await this.collection.getTrainerCollection();
   }
 
   async onGetPokemonCatalogue() {
