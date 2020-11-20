@@ -11,7 +11,7 @@ export class PokemonAPIService {
   pokemonCount = 0;
   numberOfPages = 0;
   nrOfPokemonsPerPage = 50;
-  pokemonPages = [];
+  pokemonPages = new Array();
   initialized = false;
 
   constructor(private http: HttpClient) {
@@ -20,6 +20,7 @@ export class PokemonAPIService {
   async initPokemonCatalogue() {
     if (!this.initialized) {
       this.initialized = true;
+
       let pokemonInfo = await this.getAllPokemons();
       this.pokemonCount = pokemonInfo.count;
       this.numberOfPages = this.pokemonCount / this.nrOfPokemonsPerPage;
@@ -28,7 +29,7 @@ export class PokemonAPIService {
         let nextPage = [];
         for (let p = 0; p < this.nrOfPokemonsPerPage; p++) {
           let pokemonResult = await this.getPokemonByUrl(nextSetOfPokemons.results[p].url);
-         let pokemonObject = this.buildPokemonObject(pokemonResult);
+          let pokemonObject = this.buildPokemonObject(pokemonResult);
           nextPage.push(pokemonObject);
         }
         this.pokemonPages.push(nextPage);
@@ -36,11 +37,11 @@ export class PokemonAPIService {
     }
   }
 
-  private getAllPokemons() {
+  private getAllPokemons(): any {
     return this.http.get(this.url + 'pokemon?limit=1050&offset=0').toPromise();
   }
 
-  private getPokemonPage(pageIndex: number) {
+  private getPokemonPage(pageIndex: number): any {
     const offset = pageIndex * this.nrOfPokemonsPerPage;
     return this.http.get(this.url + 'pokemon?limit=' + this.nrOfPokemonsPerPage + '&offset=' + offset).toPromise();
   }
@@ -58,7 +59,7 @@ export class PokemonAPIService {
   }
 
 /*Reusable pokemon object builder */
-  private buildPokemonObject(pokemon: any) {
+  private buildPokemonObject(pokemon: any): any {
     let pokemonName = pokemon.name;
     let name = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
     let id = pokemon.id;
