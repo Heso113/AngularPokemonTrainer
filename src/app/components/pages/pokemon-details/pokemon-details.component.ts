@@ -44,7 +44,7 @@ export class PokemonDetailsComponent implements OnInit {
     this.collection.removePokemonFromCollection(id);
   }
 
-  
+
   onClickToTrainerPage() {
     this.router.navigateByUrl('/trainerPage');
  }

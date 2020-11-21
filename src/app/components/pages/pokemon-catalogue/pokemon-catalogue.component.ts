@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
 
@@ -22,13 +22,16 @@ export class PokemonCatalogueComponent implements OnInit {
   }
 
   onBackClicked() {
-    this.router.navigateByUrl('/trainerPage');
+    console.log("onback clicked");
+    this.hidePokemonCatalogue.emit();
+    
   }
 
   async getPageOfPokemons(index: number) {
     this.currentPokemonPage = this.api.getPreLoadedPokemonPage(index);
   }
 
- 
+ @Output() hidePokemonCatalogue: EventEmitter<any> = new EventEmitter();
 
+ 
 }
