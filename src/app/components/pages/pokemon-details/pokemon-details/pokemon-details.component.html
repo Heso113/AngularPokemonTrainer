@@ -1,31 +1,108 @@
-
 <div class="container">
-    <h1 class="text-center mb-5">Pokémon Details</h1>
+  <h1 class="text-center m-5">Pokémon Details</h1>
 
-    <div class="card text-center" *ngIf="pokemon">
-        <div class="card-header">
-          <h4 class="text-center">{{pokemon.baseStats.name}}</h4>
-        </div>
-        <div class="card-body">
-          <img src="..." class="img-fluid" alt="responsive image">
-          <table class="table">
-              <thead>
-                <tr>
-                    <th>Base Stats</th>
-                    <th>Profile</th>
-                    <th>Moves</th>
-                  </tr>
-              </thead>
-              <tbody>
+  <div class="btn-group-vertical m-4">
+    <button (click)="onClickToTrainerPage()" class="btn btn-sm btn-info mb-3">
+      Back to my trainer page
+    </button>
+    <button (click)="onClickToPokemonCatalogue()" class="btn btn-sm btn-info">
+      Back to pokemon catalogue
+    </button>
+  </div>
 
-              </tbody>
-          </table>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer text-muted">
-            <button class="btn btn-success mr-3" (click)="addPokemonToTrainerCollection(pokemon.baseStats.id)">Catch this Pokémon!</button> 
-            <button class="btn btn-danger" (click)="removePokemonFromTrainerCollection(pokemon.baseStats.id)">Delete this Pokémon</button> 
-        </div>
+  <div class="card text-center border border-dark" *ngIf="pokemon">
+    <div class="card-header text-white bg-dark mb-3">
+      <h2 class="text-center mb-3">{{ pokemon.baseStats.name }}</h2>
+      <button
+        class="btn btn-success mr-3"
+        (click)="addPokemonToTrainerCollection(pokemon.baseStats.id)"
+      >
+        Catch this Pokémon!
+      </button>
+      <button
+        class="btn btn-danger"
+        (click)="removePokemonFromTrainerCollection(pokemon.baseStats.id)"
+      >
+        Release this Pokémon
+      </button>
+    </div>
+
+    <div class="card-body">
+      <img
+        src="{{ pokemon.baseStats.imgUrl }}"
+        class="img-fluid"
+        alt="responsive image"
+        class="mb-4"
+      />
+      <div class="base-stat-container">
+        <h5 class="text-center">Base Stats</h5>
+        <table class="table table-bordered border-dark">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Base Stat</th>
+              <th scope="col">Types</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row">
+              <td>{{ pokemon.baseStats.name }}</td>
+              <td>{{ pokemon.baseStats.baseStats[0].base_stat }}</td>
+              <td>
+                <div *ngFor="let type of pokemon.baseStats.types">
+                  {{ type.type.name }}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
+      <div class="profile-container">
+        <h5 class="text-center">Profile</h5>
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Height</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Base Experience</th>
+              <th scope="col">Abilities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row">
+              <td>{{ pokemon.profile.height }}</td>
+              <td>{{ pokemon.profile.weight }} KG</td>
+              <td>{{ pokemon.profile.baseExperience }} HP</td>
+              <td>
+                <div *ngFor="let ability of pokemon.profile.abilities">
+                  {{ ability.ability.name }}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="moves-container">
+        <h5 class="text-center">Moves</h5>
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <th scope="col">Move</th>
+            <th scope="col">Damage</th>
+            <th scope="col">Description</th>
+          </thead>
+          <tbody>
+            <tr scope="row" *ngFor="let move of pokemonMoves">
+              <td>{{ move.name }}</td>
+              <td>{{ move.damage }}</td>
+              <td class="text-left">{{ move.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card-footer bg-dark text-muted"></div>
+  </div>
 </div>
