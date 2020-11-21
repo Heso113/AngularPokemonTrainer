@@ -2,11 +2,9 @@
 <div class="container">
     <h1 class="text-center mt-3">Pokemon Catalogue</h1>
     <nav>
-        <div>
-            <button (click)="onBackClicked()">Back</button>
-        </div>
-        <div>
-            <button *ngFor="let page of pokemonPages; index as i" (click)="getPageOfPokemons(i)">{{i}}</button>
+        <div class="btn-group m-4">
+            <button (click)="onBackClicked()" class="btn btn-sm btn-info mr-3">Back</button>
+            <button *ngFor="let page of pokemonPages; index as i" (click)="getPageOfPokemons(i)" class="btn btn-sm btn-info mr-1">{{i}}</button>
         </div>
     </nav>
    
