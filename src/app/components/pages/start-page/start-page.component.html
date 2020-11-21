@@ -1,7 +1,13 @@
 
+
+<div class="jumbotron jumbotron-fluid">
+    <h1 class="text-center">Welcome to the Pokemon Trainer App!</h1>
+</div>
+
+
 <div class="container">
-    <h1 class="text-center mt-3">Welcome to the Pokemon Trainer App!</h1>
     <div class="text-center">
-        <button class="Btn btn-lg" (click)="onStartClicked()" type="button">Get Started!</button>
+        <button *ngIf="!showLoginForm" class="Btn btn-lg" (click)="onStartClicked()" type="button">Get Started!</button>
     </div>
+    <app-login-form *ngIf="showLoginForm"></app-login-form>
 </div>
