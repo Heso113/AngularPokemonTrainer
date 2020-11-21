@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
+import { TrainercollectionService } from 'src/app/services/trainercollection/trainercollection.service';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -13,7 +14,8 @@ export class PokemonDetailsComponent implements OnInit {
   pokemon: any;
   pokemonMoves = new Array();
 
-  constructor(private api: PokemonAPIService, private activeRoute: ActivatedRoute, private router: Router) {
+
+  constructor(private api: PokemonAPIService, private activeRoute: ActivatedRoute, private router: Router, private collection: TrainercollectionService) {
    this.pokemonId = this.activeRoute.snapshot.paramMap.get('id');
 
    }
@@ -32,6 +34,14 @@ export class PokemonDetailsComponent implements OnInit {
       }
       this.pokemonMoves.push(moveDetails)
     })
+  }
+
+  addPokemonToTrainerCollection(id: number) {
+    this.collection.addPokemonToTrainerCollection(id);
+  }
+
+  removePokemonFromTrainerCollection(id: number) {
+    this.collection.removePokemonFromCollection(id);
   }
 
   

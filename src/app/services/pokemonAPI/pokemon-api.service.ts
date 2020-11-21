@@ -58,6 +58,16 @@ export class PokemonAPIService {
     return this.pokemonPages;
   }
 
+  async getPokemonCollectionFromIds(idArray: any) {
+    let pokemonArray = new Array();
+    for (let i = 0; i < idArray.length; i++) {
+      let id = parseInt(idArray[i]);
+      let pokemon = await this.getPokemonDetails(id);
+      pokemonArray.push(pokemon);
+    }
+    return pokemonArray;
+  }
+
 /*Reusable pokemon object builder */
   private buildPokemonObject(pokemon: any): any {
     let pokemonName = pokemon.name;

@@ -10,7 +10,7 @@ import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.servi
 export class PokemonCatalogueComponent implements OnInit {
 
   currentPokemonPage = [];
-  pokemonPages = [];
+  pokemonPages = new Array();
   currentPokemonCard = {};
 
   constructor(private api: PokemonAPIService, private router: Router) {
