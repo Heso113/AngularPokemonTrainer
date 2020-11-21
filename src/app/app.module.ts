@@ -9,8 +9,8 @@ import { StartPageComponent } from './components/pages/start-page/start-page.com
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { TrainerPageComponent } from './components/pages/trainer-page/trainer-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PokemonCatalogueComponent } from './components/pages/pokemon-catalogue/pokemon-catalogue/pokemon-catalogue.component';
-import { PokemonDetailsComponent } from './components/pages/pokemon-details/pokemon-details/pokemon-details.component';
+import { PokemonCatalogueComponent } from './components/pages/pokemon-catalogue/pokemon-catalogue.component';
+import { PokemonDetailsComponent } from './components/pages/pokemon-details/pokemon-details.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 
 @NgModule({
