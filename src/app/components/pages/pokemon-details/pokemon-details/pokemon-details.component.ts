@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
 
 @Component({
@@ -13,11 +13,10 @@ export class PokemonDetailsComponent implements OnInit {
   pokemon: any;
   pokemonMoves = new Array();
 
-  constructor(private api: PokemonAPIService, private activeRoute: ActivatedRoute) {
+  constructor(private api: PokemonAPIService, private activeRoute: ActivatedRoute, private router: Router) {
    this.pokemonId = this.activeRoute.snapshot.paramMap.get('id');
 
    }
-
 
   async getPokemonDetails() {
     this.pokemon = await this.api.getPokemonDetails(Number(this.pokemonId));
@@ -35,7 +34,14 @@ export class PokemonDetailsComponent implements OnInit {
     })
   }
 
-  // power, flavor_text_entries [0]-> flavor_text
+  
+  onClickToTrainerPage() {
+    this.router.navigateByUrl('/trainerPage');
+ }
+
+  onClickToPokemonCatalogue() {
+    this.router.navigateByUrl('/pokemonCatalogue');
+  }
   
   ngOnInit(): void {
     this.getPokemonDetails();

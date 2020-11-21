@@ -4,8 +4,8 @@
   <h1 class="text-center m-5">Pokémon Details</h1>
     
     <div class="btn-group-vertical m-4">
-      <button class="btn btn-info mb-3">Back to my trainer page</button>
-      <button class="btn btn-info">Back to pokemon catalogue</button>
+      <button (click)="onClickToTrainerPage()" class="btn btn-sm btn-info mb-3">Back to my trainer page</button>
+      <button (click)="onClickToPokemonCatalogue()" class="btn btn-sm btn-info">Back to pokemon catalogue</button>
     </div>
     
   
@@ -15,7 +15,7 @@
         <div class="card-header text-white bg-dark mb-3">
           <h2 class="text-center mb-3">{{pokemon.baseStats.name}}</h2>
           <button class="btn btn-success mr-3">Catch this Pokémon!</button> 
-          <button class="btn btn-danger">Delete this Pokémon</button> 
+          <button class="btn btn-danger">Release this Pokémon</button> 
         </div>
 
         <div class="card-body">
