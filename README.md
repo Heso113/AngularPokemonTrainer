@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
 
+## About
+
+This is an application where a logged in user can collect a pokémon card deck. The Pokémon API is used to fetch the entire pokémon catalogue and it's also possible to see detailed information about each pokémon such as base stats, profile, moves and their description.  
+
+## Hosting at Heroku
+
+This web application is deployed to Heroku at: 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -25,3 +33,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Authors
+lillap and Heso113
