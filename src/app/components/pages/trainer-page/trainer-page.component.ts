@@ -40,11 +40,13 @@ export class TrainerPageComponent implements OnInit {
     this.router.navigateByUrl('startPage');
   }
 
-  hidePokemonCatalogue() {
-    console.log("inside parent hide poke cat");
-    this.showPokemonCatalogue = false;
-    this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
-    this.pageTitle = "My Trainer Page";
+  hidePokemonCatalogue(event: any) {
+    // if (event){
+      this.showPokemonCatalogue = false;
+      this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
+      this.pageTitle = "My Trainer Page";
+    // }
+    
   }
 
 
