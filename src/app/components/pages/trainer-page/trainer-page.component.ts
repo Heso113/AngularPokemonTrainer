@@ -21,6 +21,7 @@ export class TrainerPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showPokemonCatalogue = this.session.getStateOfShowPokemonCatalogue();
   }
 
   async init() {
@@ -30,8 +31,8 @@ export class TrainerPageComponent implements OnInit {
 
   async onGetPokemonCatalogue() {
     this.showPokemonCatalogue = true;
+    this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
     this.pageTitle = "Pokémon Catalogue";
-    // this.router.navigateByUrl('/pokemonCatalogue')
   }
 
   onLogOutClicked() {
@@ -42,8 +43,9 @@ export class TrainerPageComponent implements OnInit {
   hidePokemonCatalogue() {
     console.log("inside parent hide poke cat");
     this.showPokemonCatalogue = false;
-    console.log(this.showPokemonCatalogue);
+    this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
     this.pageTitle = "My Trainer Page";
-    console.log(this.pageTitle);
   }
+
+
 }
