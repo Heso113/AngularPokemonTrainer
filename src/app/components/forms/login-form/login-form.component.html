@@ -9,10 +9,10 @@
             </div>
 
             <!--Check if the user has clicked in the field and left it empty and the validation failed-->
-            <div *ngIf="trainerName.invalid && (trainerName.dirty || trainerName.touched)">
-                <p *ngIf="trainerName.errors.required">Trainer name is required.</p>
-                <p *ngIf="trainerName.errors.minlength">Trainer name must be at least 3 characters long.</p>
-                <p *ngIf="trainerName.errors.maxlength">Trainer name must be shorter than 30 characters.</p>
+            <div *ngIf="trainerName?.invalid && (trainerName?.dirty || trainerName?.touched)">
+                <p *ngIf="trainerName?.errors?.required">Trainer name is required.</p>
+                <p *ngIf="trainerName?.errors?.minlength">Trainer name must be at least 3 characters long.</p>
+                <p *ngIf="trainerName?.errors?.maxlength">Trainer name must be shorter than 30 characters.</p>
             </div>
             
             <br>
