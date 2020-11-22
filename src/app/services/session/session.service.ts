@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+
 
 
 @Injectable({
@@ -8,7 +8,8 @@ import { FormGroup } from '@angular/forms';
 export class SessionService {
 
   loggedIn = false;
-
+  showPokemonCatalogue = false;
+ 
   constructor() { }
 
   
@@ -42,5 +43,11 @@ export class SessionService {
     return localStorage.getItem('trainerName') || '';
   }
 
+  getStateOfShowPokemonCatalogue() {
+    return this.showPokemonCatalogue;
+  }
 
+  setStateOfShowPokemonCatalogue(showPokemonCatalogue: boolean) {
+    this.showPokemonCatalogue = showPokemonCatalogue;
+  }
 }

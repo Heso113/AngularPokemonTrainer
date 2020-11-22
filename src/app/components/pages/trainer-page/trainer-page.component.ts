@@ -12,13 +12,16 @@ import { TrainercollectionService } from 'src/app/services/trainercollection/tra
 })
 export class TrainerPageComponent implements OnInit {
 
+  showPokemonCatalogue: boolean = false;
   pokemonCollection = new Array();
+  pageTitle: string = "My Trainer Page";
 
   constructor(private session: SessionService, private router: Router, private api: PokemonAPIService, private collection: TrainercollectionService) {
     this.init();
   }
 
   ngOnInit(): void {
+    this.showPokemonCatalogue = this.session.getStateOfShowPokemonCatalogue();
   }
 
   async init() {
@@ -27,11 +30,22 @@ export class TrainerPageComponent implements OnInit {
   }
 
   async onGetPokemonCatalogue() {
-    this.router.navigateByUrl('/pokemonCatalogue')
+    this.showPokemonCatalogue = true;
+    this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
+    this.pageTitle = "Pokémon Catalogue";
   }
 
   onLogOutClicked() {
     this.session.logOut();
     this.router.navigateByUrl('startPage');
   }
+
+  hidePokemonCatalogue() {
+    console.log("inside parent hide poke cat");
+    this.showPokemonCatalogue = false;
+    this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
+    this.pageTitle = "My Trainer Page";
+  }
+
+
 }
