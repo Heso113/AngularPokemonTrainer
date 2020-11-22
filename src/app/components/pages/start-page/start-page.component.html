@@ -1,13 +1,14 @@
-
+<body>
 
 <div class="jumbotron jumbotron-fluid">
-    <h1 class="text-center">Welcome to the Pokémon Trainer App!</h1>
+    <h1 class="text-center">
+        <a href="https://fontmeme.com/pokemon-font/"><img src="https://fontmeme.com/permalink/201122/d63fd159680ce0624b5e691aa5a8bb74.png" alt="pokemon-font" border="0"></a>
+    </h1>
 </div>
 
 
 <div class="container">
-    <div class="text-center">
-        <button *ngIf="!showLoginForm" class="Btn btn-lg" (click)="onStartClicked()" type="button">Get Started!</button>
-    </div>
+        <button *ngIf="!showLoginForm" (click)="onStartClicked()" id="startButton"><strong>Get Started!</strong></button>
     <app-login-form *ngIf="showLoginForm"></app-login-form>
 </div>
+</body>

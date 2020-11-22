@@ -1,23 +1,25 @@
-<div class="jumbotron jumbotron-fluid">
-    <h1 class="text-center">{{pageTitle}}</h1>
-</div>
-
-
-<div class="container">
-    <div>
-        <button class="btn btn-sm btn-info mr-3" (click)="onGetPokemonCatalogue()" type="button">Pokemon Catalogue</button>
-        <button class="btn btn-sm btn-info" (click)="onLogOutClicked()" type="button">Logout</button>
+<body>
+        <div class="jumbotron jumbotron-fluid">
+        <h1 class="text-center">{{pageTitle}}</h1>
     </div>
 
-    <app-pokemon-catalogue *ngIf="showPokemonCatalogue" (hidePokemonCatalogue)="hidePokemonCatalogue($event)"></app-pokemon-catalogue>
 
-    <div *ngIf="!showPokemonCatalogue">
-        <h3 class="text-center">My Pokémons</h3>
-        <div class="row row-cols-1 row-cols-md-5">
-            <div class="card h-100 m-3" style="width: 18rem;" *ngFor="let pokemon of pokemonCollection; index as i">
-                <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card> 
+    <div class="container">
+        <div>
+            <button class="btn btn-sm btn-info mr-3" (click)="onGetPokemonCatalogue()" type="button">Pokemon Catalogue</button>
+            <button class="btn btn-sm btn-info" (click)="onLogOutClicked()" type="button">Logout</button>
+        </div>
+
+        <app-pokemon-catalogue *ngIf="showPokemonCatalogue" (hidePokemonCatalogue)="hidePokemonCatalogue($event)"></app-pokemon-catalogue>
+
+        <div *ngIf="!showPokemonCatalogue">
+            <h3 class="text-center">My Pokémons</h3>
+            <div class="row row-cols-1 row-cols-md-5">
+                <div class="card h-100 m-3" style="width: 18rem;" *ngFor="let pokemon of pokemonCollection; index as i">
+                    <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card> 
+                </div>
             </div>
         </div>
     </div>
-</div>
+</body>
 

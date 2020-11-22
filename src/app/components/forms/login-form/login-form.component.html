@@ -3,7 +3,7 @@
     <h4 class="text-center mt-3">Login</h4>
         <form [formGroup]="loginForm"> 
             <div class="form-group">   
-                <label for="trainerName">Trainer name</label>
+                <label for="trainerName"><strong>Trainer name</strong></label>
                 <input class="form-control" type="text" name="trainerName" id="trainerName" 
                 placeholder="Enter your trainer name..." formControlName="trainerName" required minLength="3" maxLength="30">
             </div>
@@ -18,7 +18,7 @@
             <br>
 
             <div class="form-group">
-                <button class="btn btn-primary" (click)="onLoginClicked()" type="button" [disabled]="loginForm.invalid">
+                <button class="btn" (click)="onLoginClicked()" type="button" [disabled]="loginForm.invalid">
                     Login Trainer
                 </button>
             </div>
