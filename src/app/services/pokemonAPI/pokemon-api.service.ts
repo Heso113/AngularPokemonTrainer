@@ -100,7 +100,7 @@ export class PokemonAPIService {
     return pokemonMoveDetails;
   }
 
-  private getMoveByUrl(url: string) {
+  private getMoveByUrl(url: string): any {
     return this.http.get(url).toPromise();
   }
 
