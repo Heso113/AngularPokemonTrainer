@@ -11,6 +11,8 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class StartPageComponent implements OnInit {
 
+  showLoginForm: boolean = false;
+
   constructor(private session: SessionService, private router: Router, private api: PokemonAPIService) { 
   }
 
@@ -23,7 +25,7 @@ export class StartPageComponent implements OnInit {
       if (this.session.userExists()) {
         this.router.navigateByUrl('/trainerPage');
       } else {
-        this.router.navigateByUrl('/loginForm');
+        this.showLoginForm = true;
       }
     } catch (e) {
       console.log(e.error);

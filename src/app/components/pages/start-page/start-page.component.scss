@@ -1,0 +1,42 @@
+
+ body {
+    width: 100%;
+    min-height:100vh;
+    background-size: cover; 
+    background-color: #3B4CCA;
+
+}
+.jumbotron {
+    background-color: #3B4CCA;
+}
+
+h1 {
+    color: #FFDE00;
+}
+
+
+#startButton {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5vw;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    height: 6rem;
+    transition-duration: 0.4s;
+    box-shadow: 4px 4px rgb(164, 164, 172);
+    top: 50%;
+    background-color:  #CC0000;
+    border: red;
+    margin: auto;
+    display:block;
+    color:#FFDE00;
+  }
+
+  #startButton:hover {
+    border: 3px solid  #FF0000;
+    background-color: #FF0000;
+    box-shadow: 4px 4px rgb(73, 73, 77);
+  }

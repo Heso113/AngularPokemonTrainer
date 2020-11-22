@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonAPIService } from 'src/app/services/pokemonAPI/pokemon-api.service';
+import { SessionService } from 'src/app/services/session/session.service';
 import { TrainercollectionService } from 'src/app/services/trainercollection/trainercollection.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class PokemonDetailsComponent implements OnInit {
   pokemonMoves = new Array();
 
 
-  constructor(private api: PokemonAPIService, private activeRoute: ActivatedRoute, private router: Router, private collection: TrainercollectionService) {
+  constructor(private api: PokemonAPIService, private activeRoute: ActivatedRoute, private router: Router, private collection: TrainercollectionService, private session: SessionService) {
    this.pokemonId = this.activeRoute.snapshot.paramMap.get('id');
 
    }
@@ -23,7 +24,7 @@ export class PokemonDetailsComponent implements OnInit {
   async getPokemonDetails() {
     this.pokemon = await this.api.getPokemonDetails(Number(this.pokemonId));
     this.pokemon.moves.map(async (move: any) =>{
-      let moveResult = await this.api.getPokemonMoveDetails(move.move.url)
+      let moveResult: any = await this.api.getPokemonMoveDetails(move.move.url)
       console.log(moveResult);
       let moveDetails = {
         name: moveResult.name,
@@ -44,13 +45,15 @@ export class PokemonDetailsComponent implements OnInit {
     this.collection.removePokemonFromCollection(id);
   }
 
-  
+
   onClickToTrainerPage() {
+    this.session.setStateOfShowPokemonCatalogue(false);
     this.router.navigateByUrl('/trainerPage');
  }
 
   onClickToPokemonCatalogue() {
-    this.router.navigateByUrl('/pokemonCatalogue');
+    this.session.setStateOfShowPokemonCatalogue(true);
+    this.router.navigateByUrl('/trainerPage');
   }
   
   ngOnInit(): void {
