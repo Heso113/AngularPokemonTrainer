@@ -8,7 +8,7 @@ This is an application where a logged in user can collect a pokémon card deck. 
 
 ## Hosting at Heroku
 
-This web application is deployed to Heroku at: 
+This web application is deployed to Heroku at: https://pokemon-trainer-lp-he.herokuapp.com/ 
 
 ## Development server
 
