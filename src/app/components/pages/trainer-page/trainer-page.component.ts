@@ -41,13 +41,9 @@ export class TrainerPageComponent implements OnInit {
   }
 
   hidePokemonCatalogue(event: any) {
-    // if (event){
       this.showPokemonCatalogue = false;
       this.session.setStateOfShowPokemonCatalogue(this.showPokemonCatalogue);
       this.pageTitle = "My Trainer Page";
-    // }
-    
   }
-
 
 }
